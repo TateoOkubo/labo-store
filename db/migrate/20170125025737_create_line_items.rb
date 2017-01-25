@@ -3,7 +3,7 @@ class CreateLineItems < ActiveRecord::Migration
     create_table :line_items do |t|
       t.references :cart, index: true
       t.references :item, index: true
-      t.integer :quantity
+      t.integer :quantity, default: 0
 
       t.timestamps null: false
       

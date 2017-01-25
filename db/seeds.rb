@@ -13,7 +13,7 @@ User.create!(name:  "Example User",
              password_digest: "foobar",
              admin: true)
 print "."
-99.times do |n|
+10.times do |n|
   name  = Faker::Name.name
   email = "example-#{n+1}@railstutorial.org"
   password = "password"
@@ -25,14 +25,19 @@ print "."
 end
 puts "\n-> User_seeds OK!!"
 
-ItemClass.create(class_name: "Ice Cream")
-ItemClass.create(class_name: "Cup Noodle")
-puts "ItemClass_seeds OK"
+Type.create(name: "Ice Cream")
+Type.create(name: "Cup Noodle")
+puts "Type_seeds OK"
 
-#10.times do |n|
-#  name = Faker::Food.ingredient
-#  price = Faker::Number.number(4)
+
+
+10.times do |n|
+  name = Faker::Food.ingredient
+  price = Faker::Number.number(4)
   
-  #Item.create!(name: name, price: price)
-#end
+  Item.create!(name: name, price: price)
+  print "."
+end
+
+puts "\n-> Item_seeds OK"
 
