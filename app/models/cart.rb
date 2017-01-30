@@ -1,11 +1,10 @@
 class Cart < ActiveRecord::Base
-  belongs_to :user, class_name: "User"
+  belongs_to :user
   
-  has_many :cart_relationships, class_name: "LineItem",
-                                foreign_key: "cart_id",
-                                dependent: :destroy
+  has_many :line_items, foreign_key: "cart_id",
+                        dependent: :destroy
   
-  has_many :items_in_cart, through: :cart_relationships, source: :item
+  has_many :items_in_cart, through: :line_items, source: :item
   
   #商品をカートに追加
   def add(item)

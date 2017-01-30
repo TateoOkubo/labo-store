@@ -1,10 +1,17 @@
 class Item < ActiveRecord::Base
-  belongs_to :type, class_name: "Type"
+  validates :name, presence: true, 
+                   length: {maximum: 50, minimum: 1,
+                            too_long: "%{count}以下の文字列にしてください",
+                            too_short: "%{count}以上の文字列にしてください" }
   
-  has_many :item_relationships, class_name: "LineItem",
-                                foreign_key: "item_id",
-                                dependent: :destroy
+  # priceは必須で，整数値のみ
+  validates :price, presence: true, numericality: {only_integer: true}
   
-  has_many :contain_carts, through: :item_relationships, source: :cart
+  belongs_to :type
+  
+  has_many :line_items,  foreign_key: "item_id",
+                         dependent: :destroy
+  
+  has_many :contain_carts, through: :line_items, source: :cart
   
 end

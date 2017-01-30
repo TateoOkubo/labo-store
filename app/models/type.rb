@@ -1,3 +1,5 @@
 class Type < ActiveRecord::Base
-  has_many :item, class_name: "Item"
+  validates :name, presence: true, length: {maximum: 20 }
+  
+  has_many :item
 end
