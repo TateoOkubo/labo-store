@@ -8,7 +8,7 @@ class Cart < ActiveRecord::Base
   
   #商品をカートに追加
   def add(item)
-    add_item = cart_relationships.find_or_create_by(item_id: item.id)
+    add_item = line_items.find_or_create_by(item_id: item.id)
     add_item.increment(:quantity, 1)
     add_item.save
     # 数量をインクリメント
@@ -19,7 +19,7 @@ class Cart < ActiveRecord::Base
   # line_itemのquantityが0になったら削除
   def take(item)
     binding.pry
-    take_item = cart_relationships.find_by(item_id: item.id)
+    take_item = line_items.find_by(item_id: item.id)
     
     if take_item
       take_item.increment(:quantity, -1)

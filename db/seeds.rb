@@ -16,6 +16,23 @@ puts "destroy all model"
 
 puts "seeds runninng..."
 
+type = [ Type.find_or_create_by(name: "Ice Cream"), Type.find_or_create_by(name: "Cup Noodle")]
+puts "Type_seeds OK"
+
+
+10.times do |n|
+  name = Faker::Food.ingredient
+  price = Faker::Number.number(4)
+  
+  item = Item.find_or_create_by(name: name, price: price)
+  item.type = type[n % 2]
+  item.save
+  # typeのセッティング
+  print "."
+end
+
+puts "\n-> Item_seeds OK"
+
 # ユーザー
 admin = User.find_or_create_by(name:  "Example User",
              email: "example@railstutorial.org",
@@ -35,24 +52,27 @@ print "."
 end
 puts "\n-> User_seeds and Cart_seeds OK!!"
 
-type = [ Type.find_or_create_by(name: "Ice Cream"), Type.find_or_create_by(name: "Cup Noodle")]
-puts "Type_seeds OK"
+#itemを保存しておく
+items = Item.all
 
-
-10.times do |n|
-  name = Faker::Food.ingredient
-  price = Faker::Number.number(4)
+Cart.all.each do |c|
+  rand_val = rand(Item.count) + 1
   
-  item = Item.find_or_create_by(name: name, price: price)
-  item.type = type[n % 2]
-  item.save
-  # typeのセッティング
+  #カートに入れるitemの種類はランダム個でランダムな数を入れる
+  rand_val.times do |i|
+
+    #そのうち，
+    in_item_num = rand(3) + 1
+    in_item_num.times do |j|
+      c.add(items[i])
+    end
+  end
+  
   print "."
 end
 
-puts "\n-> Item_seeds OK"
+puts "\n -> LineItem_seeds OK!!"
 
-#cart seed ユーザと同じ数用意
 
 #puts "\n-> Cart_seeds OK"
 
