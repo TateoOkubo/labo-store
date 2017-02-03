@@ -25,7 +25,7 @@ puts "Type_seeds OK"
   price = Faker::Number.number(4)
   
   item = Item.find_or_create_by(name: name, price: price)
-  item.type = type[n % 2]
+  item.type = type[n % Type.count]
   item.save
   # typeのセッティング
   print "."
@@ -60,9 +60,8 @@ Cart.all.each do |c|
   
   #カートに入れるitemの種類はランダム個でランダムな数を入れる
   rand_val.times do |i|
-
-    #そのうち，
     in_item_num = rand(3) + 1
+    
     in_item_num.times do |j|
       c.add(items[i])
     end
@@ -73,7 +72,5 @@ end
 
 puts "\n -> LineItem_seeds OK!!"
 
-
-#puts "\n-> Cart_seeds OK"
 
 

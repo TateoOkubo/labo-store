@@ -52,5 +52,14 @@ group :development, :test do
   gem 'pry-doc'    # methodを表示
   gem 'pry-byebug' # デバッグを実施(Ruby 2.0以降で動作する)
   gem 'pry-stack_explorer' # スタックをたどれる
+  
+  gem "rspec-rails" #, "~> 2.14.0"
+  gem "factory_girl_rails", "~> 4.2.1"
 end
 
+group :test do
+  gem "capybara", "~> 2.2.0" 
+  gem "database_cleaner", "~> 1.0.1"
+  gem "launchy", "~> 2.3.0"
+  gem "selenium-webdriver", "~> 2.45.0"
+end
