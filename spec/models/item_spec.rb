@@ -1,5 +1,10 @@
 require 'spec_helper'
 
+before :each do
+  
+end
+
+
 describe Item do
   it "nameとpriceが無ければ無効" do
     item = Item.create(name: "ice", price: 100)
