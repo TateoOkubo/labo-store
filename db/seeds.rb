@@ -34,9 +34,10 @@ end
 puts "\n-> Item_seeds OK"
 
 # ユーザー
-admin = User.find_or_create_by(name:  "Example User",
+admin = User.create!(name:  "Example User",
              email: "example@railstutorial.org",
-             password_digest: "foobar",
+             password: "foobar",
+             password_confirmation: "foobar",
              admin: true)
 admin.cart = Cart.create()
 print "."
@@ -44,9 +45,10 @@ print "."
   name  = Faker::Name.name
   email = "example-#{n+1}@railstutorial.org"
   password = "password"
-  User.find_or_create_by(name: name,
+  User.create!(name: name,
               email: email,
-              password_digest: password,
+              password: password,
+              password_confirmation: password,
               admin: false).cart = Cart.create()
   print "."
 end

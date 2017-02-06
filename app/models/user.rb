@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_secure_password
   
   #nameとemailは必須
   validates :name, presence: true, length: {maximum: 50 }
