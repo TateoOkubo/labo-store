@@ -1,0 +1,19 @@
+this is show.html.erb
+
+<%# テーブル使う? %>
+<% #画像，名前，料金，入っている個数を表示 %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th><%# 商品画像 %></th> <th><%# 商品名 %></th> <th>価格</th> <th>個数</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cart_items.each do |cart_item| %>
+      <%= render 'item', show_item: cart_item %>
+    <% end %>
+</table>
+<%# 購入ボタン %>
+
+<%= debug @cart_items %>

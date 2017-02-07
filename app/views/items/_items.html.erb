@@ -5,6 +5,7 @@
     <% items.each do |item| %>
     <div class="col-sm-3">
       <div class="card">
+        <% #TODO 画像は検索エンジンかAmazon, RakutenとかのAPIで引っ張ってくる %>
         <%= image_tag('no-image.png', alt: item['name'], class: "card-img-top") %>
         <div class="card-block">
           <h4 class="card-title"> <%= link_to item.name, '#' %> </h4>
@@ -15,7 +16,7 @@
       </div>
     </div>
 
-     <% end %>
+    <% end %>
   </div>
   </div>
 </div>
