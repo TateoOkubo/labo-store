@@ -17,6 +17,11 @@
         </li>
         
         <% if logged_in? %>
+          <% #adminなら登録ボタンを表示 %>
+          <% if admin? %>
+            <li><%= link_to "登録", '#' %></li>
+          <% end %>
+        
           <li><%= link_to "カート", cart_path(id: session[:user_id]) %></li>
           
           <li class="dropdown">

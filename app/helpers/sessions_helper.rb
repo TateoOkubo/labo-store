@@ -6,6 +6,10 @@ module SessionsHelper
   def logged_in?
     !!current_user
   end
+  
+  def admin?
+    current_user.admin
+  end
 
   def store_location
     session[:forwarding_url] = request.url if request.get?
