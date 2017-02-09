@@ -10,11 +10,15 @@ class ItemsController < ApplicationController
   def create
     #binding.pry
     @item = Item.new(item_regist_params)
-    # nameに重複が無いかチェックするか? --> バリデーションで
+    
+    # TODO:保存が完了したかどうかをフラッシュメッセージで表示させるか
+
     if @item.save
-      render root_path
+      flash[:success] = "商品を登録しました"
+
+      render 'register'
     else
-      render root_path
+      render 'register'
     end
     
   end
