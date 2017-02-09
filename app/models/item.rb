@@ -2,7 +2,9 @@ class Item < ActiveRecord::Base
   validates :name, presence: true, 
                    length: {maximum: 50, minimum: 1,
                             too_long: "%{count}以下の文字列にしてください",
-                            too_short: "%{count}以上の文字列にしてください" }
+                            too_short: "%{count}以上の文字列にしてください" },
+                    uniqueness: true # nameの重複は禁止
+
   
   # priceは必須で，整数値のみ
   validates :price, presence: true, numericality: {only_integer: true}

@@ -7,12 +7,19 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
   
-  get 'item', to: 'items#new'
+  get 'item', to: 'items#index'
+  
   
   root to: 'toppage#home'
   
   resources :users
   resources :cart
+  
+  resources :items do
+    collection do
+      get 'register'
+    end
+  end
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
