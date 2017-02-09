@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   
 
+  #get 'types/new'
+
   #get 'users/new'
   get 'signup', to: 'users#new'
   get 'login', to: 'sessions#new'
@@ -20,6 +22,8 @@ Rails.application.routes.draw do
       get 'register'
     end
   end
+  
+  resources :types
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

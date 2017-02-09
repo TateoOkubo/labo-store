@@ -1,0 +1,16 @@
+<h1>Types#new</h1>
+<p>Find me in app/views/types/new.html.erb</p>
+
+<h1>分類登録</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@type) do |f| %>
+
+      <%= f.label :分類名 %>
+      <%= f.text_field :name, class: 'form-control'  %>
+
+      <%= f.submit "登録", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

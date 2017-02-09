@@ -19,7 +19,16 @@
         <% if logged_in? %>
           <% #adminなら登録ボタンを表示 %>
           <% if admin? %>
-            <li><%= link_to "登録", register_items_path %></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                登録 <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "商品登録", register_items_path %></li>
+                <li><%= link_to "分類登録", new_type_path %></li>
+              </ul>
+            </li>
+          
           <% end %>
         
           <li><%= link_to "カート", cart_path(id: session[:user_id]) %></li>
