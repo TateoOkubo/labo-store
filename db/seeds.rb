@@ -19,6 +19,12 @@ puts "seeds runninng..."
 type = [ Type.find_or_create_by(name: "Ice Cream"), Type.find_or_create_by(name: "Cup Noodle")]
 puts "Type_seeds OK"
 
+item1 = Item.create(name: "ピノ", price: 100)
+item1.type = type[0]
+item1.save
+item2 = Item.create(name: "パルム", price: 100)
+item2.type = type[0]
+item2.save
 
 10.times do |n|
   name = Faker::Food.ingredient

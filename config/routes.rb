@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
   
-  get 'item', to: 'items#index'
+  #get 'item', to: 'items#index'
   
   
   root to: 'toppage#home'

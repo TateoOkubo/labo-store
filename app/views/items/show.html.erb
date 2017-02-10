@@ -1,0 +1,12 @@
+<div class="row item-page">
+  <div class="col-md-4">
+    <%= image_tag('no-image.png', alt: @item.name, class: "item-img-top") %>
+  </div>
+  <div class="col-md-8">
+          
+          <h4 class="card-title"> <%= @item.name %> </h4>
+          <% #TODO 仕入れを作成したら残り個数を表示させる %>
+          <p class="card-text">残りn個</p>
+          <a href="#" class="btn btn-primary">カートに入れる</a>
+  </div>
+</div>
