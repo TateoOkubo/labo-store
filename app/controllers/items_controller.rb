@@ -14,7 +14,6 @@ class ItemsController < ApplicationController
     # TODO:保存が完了したかどうかをフラッシュメッセージで表示させるか
     if @item.save
       flash[:success] = "商品を登録しました"
-
       render 'register'
     else
       render 'register'
@@ -24,6 +23,9 @@ class ItemsController < ApplicationController
   
   def show
     @item = Item.find(params[:id])
+    puts "*********************************************"
+    p @item # pにすること
+    puts "*********************************************"
   end
   
   private

@@ -1,6 +1,6 @@
 <h1>商品一覧</h1>
-<p>Find me in app/views/items/new.html.erb</p>
+<%= debug "Find me in app/views/items/new.html.erb" if Rails.env.development? %>
 
 <%= render 'items', items: @items %>
 
-<%= debug @items %>
+<%= debug @items if Rails.env.development? %>
