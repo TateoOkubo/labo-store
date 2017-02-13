@@ -1,4 +1,6 @@
 class Item < ActiveRecord::Base
+  mount_uploader :image, ImageUploader
+  
   validates :name, presence: true, 
                    length: {maximum: 50, minimum: 1,
                             too_long: "%{count}以下の文字列にしてください",
