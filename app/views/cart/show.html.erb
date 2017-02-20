@@ -10,8 +10,16 @@ this is show.html.erb
     </tr>
   </thead>
   <tbody>
-    <% @cart_items.each do |cart_item| %>
-      <%= render 'item', show_item: cart_item %>
+    <%#= @cart.line_items.inspect %>
+    <% @cart_items.each do |show_item| %>
+      <%#= form_for(show_item, html: {controller: :line_items, action: :edit}) do |f| %>
+        <%#= f.text_field :quantity %>
+        <%#= f.submit %>
+      <%# end %>
+      <div id='show-item-<%= show_item.id %>'>
+        <%= render 'item', show_item: show_item %>
+      </div>
+          
     <% end %>
 </table>
 <%# 購入ボタン %>

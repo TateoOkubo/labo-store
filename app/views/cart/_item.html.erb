@@ -1,8 +1,47 @@
 
 <tr>
-  <td> <%= image_tag('no-image.png', alt: show_item.name, class: "cart-img") %> </td>
-  <td> <%= show_item.name %> </td>
-  <td> <%= show_item.price %> 円</td>
-  <td> <%= show_item.quantity %></td>
+  <td> 
+    <%#= 画像 %>
+    <% if show_item.image.url %>
+     <%= image_tag(show_item.image.url,alt: show_item.name, class: "cart-img")  %>
+    <% else %>
+      <%= image_tag('no-image.png', alt: show_item.name, class: "cart-img") %> 
+    <% end %>
+  </td>
+  <td>
+     <%# 商品名表示 %>
+     <%= show_item.name %>
+  </td>
+  <td>
+    <%= show_item.price * show_item.quantity  %> 円
+    (@<%= show_item.price %>)
+  </td>
+  <td> 
+    
+    <%#= show_item.quantity %>
+    <div id="form-<%= show_item.id %>">
+    <%= form_for(show_item, html: {controller: :line_items, action: :edit}, data: { remote: true }) do |f| %>
+      <%= button_tag( class: "btn btn-default btn-sm", name: "plus") do %>
+        <%= content_tag :span, "", class: "glyphicon glyphicon-plus" %>
+      <% end %>
+      <%= button_tag( class: "btn btn-default btn-sm", name: "minus") do %>
+        <%= content_tag :span, "", class: "glyphicon glyphicon-minus" %>
+      <% end %>
+      <div id="quantity-<%= show_item.id %>">
+        <%= f.number_field :quantity %>
+      </div>
+      <br>
+      <script>
+        $("#quantity-<%= show_item.id %>").change(function(e){
+          $('#form-<%= show_item.id %>').submit();
+        });
+      </script>
+
+      <%= f.submit %>
+      
+      
+    <% end %>
+    </div>
+  </td>
 </tr>
-  
+

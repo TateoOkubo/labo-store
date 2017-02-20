@@ -1,13 +1,14 @@
 <%= debug "Find me in app/views/items/edit.html.erb" if Rails.env.development? %>
+<h1>商品情報更新</h1>
 
 <%= form_for(@item) do |f| %>
   <% if @item.image.url %>
-   kok
-    <%= image_tag @item.image.url %>
+   <%= image_tag @item.image.url %>
   <% else %>
     <%= image_tag('no-image.png',  class: "card-img-top") %>
   <% end %>
-  <%= f.label :image %>
+  <br>
+  <%= f.label :画像 %>
   <%= f.file_field :image %>
   <br>
   

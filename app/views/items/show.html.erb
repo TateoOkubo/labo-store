@@ -14,5 +14,13 @@
       <div><%= hidden_field_tag :item_id, @item.id %></div>
       <%= f.submit "Add cart", class: "btn btn-primary" %>
     <% end %>
+    
+    <% if logged_in? %>
+      <% #adminなら登録ボタンを表示 %>
+      <% if admin? %>
+        <%# 編集ボタンを表示 %>
+        <a href=<%= edit_item_path %>>編集</a>
+      <% end %>
+    <% end %>
   </div>
 </div>

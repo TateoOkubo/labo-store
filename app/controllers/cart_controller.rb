@@ -2,10 +2,11 @@ class CartController < ApplicationController
   def show
     user = User.find(session[:user_id])
     @cart_items = user.cart.line_items
+    @cart = user.cart
   end
 
   def create
-    binding.pry
+    
   end
   
   def update

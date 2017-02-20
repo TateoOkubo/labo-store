@@ -14,4 +14,9 @@ class LineItem < ActiveRecord::Base
     item.name
   end
   
+  def image
+    item = Item.find(item_id)
+    item.image
+  end
+  
 end
