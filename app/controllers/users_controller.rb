@@ -22,6 +22,13 @@ class UsersController < ApplicationController
     end
   end
   
+  def buy
+    @user = User.find(params[:id])
+    @items = @user.cart.line_items
+    p "-----------------------"
+    p @items
+  end
+  
   private
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)

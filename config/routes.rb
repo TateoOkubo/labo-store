@@ -14,7 +14,13 @@ Rails.application.routes.draw do
   
   root to: 'toppage#home'
   
-  resources :users
+  resources :users do
+    member do
+      post :buy
+      get :buy
+    end
+  end
+  
   resources :cart
   
   resources :items do
@@ -25,6 +31,7 @@ Rails.application.routes.draw do
   
   resources :types
   resources :line_items
+  resources :sales
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

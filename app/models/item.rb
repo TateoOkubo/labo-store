@@ -18,4 +18,5 @@ class Item < ActiveRecord::Base
   
   has_many :contain_carts, through: :line_items, source: :cart
   
+  has_many :sale
 end
