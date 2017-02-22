@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   
 
+  get 'purchases/new'
+
   #get 'types/new'
 
   #get 'users/new'
@@ -13,6 +15,7 @@ Rails.application.routes.draw do
   
   
   root to: 'toppage#home'
+  get 'purchases', to: 'purchases#new'
   
   resources :users do
     member do
