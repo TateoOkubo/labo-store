@@ -1,9 +1,8 @@
-<h1>Purchases#new</h1>
-<p>Find me in app/views/purchases/new.html.erb</p>
+<h1>仕入れ</h1>
 
 <%= form_for(@purchase) do |f| %>
   <div class="field">
-    <%= f.label :purchase_items, "仕入れ" %><br>
+    <%#= f.label :purchase_items, "仕入れ" %><br>
     <%= f.fields_for :purchase_items do |builder| %>
        <%= render "purchase_item_fields", f: builder %>
     <% end %>
@@ -11,7 +10,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "登録" %>
   </div>
 
 <% end %>
