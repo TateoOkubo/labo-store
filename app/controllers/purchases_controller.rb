@@ -13,7 +13,7 @@ class PurchasesController < ApplicationController
     #binding.pry
     if @purchase.save
       flash[:success] = "仕入れ登録しました"
-      redirect_to root_path
+      redirect_to purchase_path
     else
       render 'new'
     end
