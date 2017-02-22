@@ -9,7 +9,8 @@ class PurchasesController < ApplicationController
     #@purchase.purchase_items.build
     p '==========================='
     p user_params
-    
+
+    #binding.pry
     if @purchase.save
       flash[:success] = "仕入れ登録しました"
       redirect_to root_path
