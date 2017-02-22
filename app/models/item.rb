@@ -18,5 +18,14 @@ class Item < ActiveRecord::Base
   
   has_many :contain_carts, through: :line_items, source: :cart
   
-  has_many :sale
+  has_many :sale_items, foreign_key: "item_id", dependent: :destroy
+  has_many :purchase_items, foreign_key: "item_id", dependent: :destroy
+  
+  # 在庫数を表示する
+  def stock
+    #仕入れ数を計算
+    sum_purchase = purchase_items.sum(:quantity)
+    sum_sale = sale_items.sum(:quantity)
+    sum_purchase - sum_sale
+  end
 end

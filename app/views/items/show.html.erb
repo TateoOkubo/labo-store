@@ -8,7 +8,7 @@
   <div class="col-md-8">
     <h4 class="card-title"> <%= @item.name %> </h4>
     <% #TODO 仕入れを作成したら残り個数を表示させる %>
-    <p class="card-text">残りn個</p>
+    <p class="card-text">残り<%= @item.stock %>個</p>
     
     <%= form_for(current_user.cart) do |f| %>
       <div><%= hidden_field_tag :item_id, @item.id %></div>
