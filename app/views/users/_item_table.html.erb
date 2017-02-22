@@ -1,0 +1,38 @@
+<%# binding.pry %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th><%# 商品画像 %></th> 
+      <th><%# 商品名 %></th> 
+      <%# purchasesコントローラからきていたら非表示 %>
+      <% if params[:controller] != "purchases" %>
+        <th>価格</th> 
+      <% end %>
+      <th>個数</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% items.each do |show_item| %>
+      <tr>
+        <th>
+          <% if show_item.image.url %>
+           <%= image_tag(show_item.image.url,alt: show_item.name, class: "cart-img")  %>
+          <% else %>
+            <%= image_tag('no-image.png', alt: show_item.name, class: "cart-img") %> 
+          <% end %>
+        </th>
+        <th><%= show_item.name %></th>
+        <% if params[:controller] != "purchases" %>
+          <th><%= show_item.price * show_item.quantity  %> 円
+              (@<%= show_item.price %>)
+          </th>
+        <% end %>
+        <th>
+          <%= show_item.quantity %>
+        </th>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

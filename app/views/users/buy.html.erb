@@ -1,34 +1,7 @@
 <%= debug "Find me in app/views/users/buy.html.erb" if Rails.env.development? %>
 <% if @items.count != 0 %>
   <%# カートの中身を一覧表示 %>
-  <table class="table">
-    <thead>
-      <tr>
-        <th><%# 商品画像 %></th> <th><%# 商品名 %></th> <th>価格</th> <th>個数</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @items.each do |show_item| %>
-        <tr>
-          <th>
-            <% if show_item.image.url %>
-             <%= image_tag(show_item.image.url,alt: show_item.name, class: "cart-img")  %>
-            <% else %>
-              <%= image_tag('no-image.png', alt: show_item.name, class: "cart-img") %> 
-            <% end %>
-          </th>
-          <th><%= show_item.name %></th>
-          <th><%= show_item.price * show_item.quantity  %> 円
-              (@<%= show_item.price %>)
-          </th>
-          <th>
-            <%= show_item.quantity %>
-          </th>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-  
+  <%= render 'item_table', items: @items %>
   
   <% #submitしたら@userのbuyを呼ぶ感じで %>
   <%= form_for(@user) do |f| %>

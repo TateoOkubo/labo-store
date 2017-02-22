@@ -4,6 +4,14 @@ class PurchasesController < ApplicationController
     @purchase.purchase_items.build
   end
   
+  def index
+    @purchases = Purchase.all
+  end
+  
+  def show
+    @purchase = Purchase.find(params[:id])
+  end
+  
   def create
     @purchase = Purchase.new(user_params)
     #@purchase.purchase_items.build
