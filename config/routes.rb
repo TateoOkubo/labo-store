@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   
   root to: 'toppage#home'
   get 'purchases', to: 'purchases#new'
+  post 'purchases', to: 'purchases#create'
   
   resources :users do
     member do
@@ -35,6 +36,7 @@ Rails.application.routes.draw do
   resources :types
   resources :line_items
   resources :sales
+  #resources :purchase
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

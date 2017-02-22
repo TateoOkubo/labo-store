@@ -1,2 +1,19 @@
 <h1>Purchases#new</h1>
 <p>Find me in app/views/purchases/new.html.erb</p>
+
+<%= form_for(@purchase) do |f| %>
+  <div class="field">
+    <%= f.label :purchase_items, "仕入れ" %><br>
+    <%= f.fields_for :purchase_items do |purchase_items_form| %>
+      <%= purchase_items_form.label :item_id, "商品id" %>
+      <%= purchase_items_form.text_field :item_id %> <br>
+      <%= purchase_items_form.label :quantity, "仕入れ数" %>
+      <%= purchase_items_form.text_field :quantity %>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>
