@@ -12,12 +12,6 @@ class User < ActiveRecord::Base
   
   has_one :cart
   has_many :sale
-  
-  # カート中身を購入する
-  def buy
-    purchase = sale.create
-    
-    purchase.record(cart.line_items)
-  end
+
   
 end

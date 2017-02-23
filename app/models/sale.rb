@@ -1,6 +1,7 @@
 class Sale < ActiveRecord::Base
   has_many :sale_items ,foreign_key: "sale_id",
                          dependent: :destroy
+  accepts_nested_attributes_for :sale_items
   belongs_to :user
   
   #販売
