@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
 
-  get 'sales/new'
+  post 'sales/new'
 
   get 'purchases/new'
 

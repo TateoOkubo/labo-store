@@ -1,2 +1,17 @@
-<h1>Sales#new</h1>
-<p>Find me in app/views/sales/new.html.erb</p>
+<h1>購入手続き</h1>
+
+<% if @items.count != 0 %>
+　<p>以下の内容で購入します</p>
+  <%# カートの中身を一覧表示 %>
+  <%= render 'share/item_table', items: @items %>
+  
+  <% #submitしたら@userのbuyを呼ぶ感じで %>
+  <%= form_for(@sale) do |f| %>
+  
+    <%= f.submit%>
+  <% end %>
+<% else %>
+ カートが空です
+<% end %>
+<%= debug @items if Rails.env.development? %>
+<%= debug @user if Rails.env.development? %>
