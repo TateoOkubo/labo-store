@@ -22,18 +22,14 @@ class SalesController < ApplicationController
     
     if @sale.save
       # line_itemsを消す必要がある
+      @items.destroy_all
+      
       flash[:success] = "購入しました"
       redirect_to new_sale_path
     else
       render 'new'
     end
-    
-    #binding.pry
-    
+
   end
-  
-  private
-  def sales_params
-    
-  end
+
 end
