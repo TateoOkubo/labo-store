@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   
 
+  get 'sales/new'
+
   get 'purchases/new'
 
   #get 'types/new'
