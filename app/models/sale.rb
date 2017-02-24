@@ -14,4 +14,13 @@ class Sale < ActiveRecord::Base
       item.destroy
     end
   end
+  
+  #合計金額を計算
+  def totalFee
+    total = 0
+    sale_items.each do |s|
+      total += s.fee
+    end
+    return total
+  end
 end

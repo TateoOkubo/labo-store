@@ -31,5 +31,12 @@ class SalesController < ApplicationController
     end
 
   end
+  
+  def index
+    @sales = Sale.where(user_id: session[:user_id])
+    
+    p "-------sales_countoller:index------------"
+    p @sales
+  end
 
 end
