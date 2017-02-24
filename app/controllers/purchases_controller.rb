@@ -18,7 +18,6 @@ class PurchasesController < ApplicationController
     p '==========================='
     p user_params
 
-    #binding.pry
     if @purchase.save
       flash[:success] = "仕入れ登録しました"
       redirect_to purchases_path
@@ -26,10 +25,13 @@ class PurchasesController < ApplicationController
       render 'new'
     end
     
+    
   end
   
   private
   def user_params
     params.require(:purchase).permit(purchase_items_attributes: [:item_id, :quantity])
   end
+  
+  
 end

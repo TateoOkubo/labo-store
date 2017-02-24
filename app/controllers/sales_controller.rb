@@ -15,12 +15,24 @@ class SalesController < ApplicationController
     @sale = Sale.new(user_id: @user.id)
     @items = @user.cart.line_items
     
+    out_of_stock = []
+    
     @items.each do |i|
       # 個数のチェックは必要?
-      @sale.sale_items.new(item_id: i.id, quantity: i.quantity)
+      #binding.pry
+      if (i.item.stock - i.quantity) >= 0
+        @sale.sale_items.new(item_id: i.id, quantity: i.quantity)
+      else
+        #在庫不足している商品名を記録
+        out_of_stock << i.name
+        
+      end
     end
     
-    if @sale.save
+    if out_of_stock.count > 0
+      flash[:alert] = out_of_stock.join(",") + "の在庫が不足してます"
+      redirect_to new_sale_path
+    elsif @sale.save
       # line_itemsを消す必要がある
       @items.destroy_all
       
@@ -29,7 +41,7 @@ class SalesController < ApplicationController
     else
       render 'new'
     end
-
+    #end
   end
   
   def index

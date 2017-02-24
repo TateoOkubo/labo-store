@@ -10,9 +10,13 @@
     <% #TODO 仕入れを作成したら残り個数を表示させる %>
     <p class="card-text">残り<%= @item.stock %>個</p>
     
-    <%= form_for(current_user.cart) do |f| %>
-      <div><%= hidden_field_tag :item_id, @item.id %></div>
-      <%= f.submit "Add cart", class: "btn btn-primary" %>
+    <% if @item.stock? %>
+      <%= form_for(current_user.cart) do |f| %>
+        <div><%= hidden_field_tag :item_id, @item.id %></div>
+        <%= f.submit "Add cart", class: "btn btn-primary" %>
+      <% end %>
+    <% else %>
+      <h4>在庫切れ</h4>
     <% end %>
     
     <% if logged_in? %>

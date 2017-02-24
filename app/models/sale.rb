@@ -23,4 +23,12 @@ class Sale < ActiveRecord::Base
     end
     return total
   end
+  
+  #在庫があるかチェックする
+  def stockCheck
+    binding.pry
+    sale_items.each do |i|
+      
+    end
+  end
 end

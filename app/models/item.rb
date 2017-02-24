@@ -28,4 +28,12 @@ class Item < ActiveRecord::Base
     sum_sale = sale_items.sum(:quantity)
     sum_purchase - sum_sale
   end
+  
+  def stock?
+    if stock > 0
+      true
+    else
+      nil
+    end
+  end
 end
