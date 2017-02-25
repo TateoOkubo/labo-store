@@ -50,6 +50,19 @@ class ItemsController < ApplicationController
     end
   end
   
+  
+  
+  def ranking
+    #have_rank =  Have.group(:item_id).order('count_all desc').limit(10).count
+
+    #@items = Item.find(have_rank.keys).sort_by{ |o| have_rank.keys.index(o.id) }
+    #@ranks = have_rank.values
+    #売上が多い順に表示
+    #map{|m| m.quantity}.sum
+    @ranking = Item.all.sort_by{|x| x.sumQuantity }.reverse
+    @sum = @ranking.map{|m| m.sumQuantity}
+  end
+  
   private
   
   def item_regist_params

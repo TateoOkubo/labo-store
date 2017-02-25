@@ -5,20 +5,16 @@ Rails.application.routes.draw do
 
   get 'purchases/new'
 
-  #get 'types/new'
-
-  #get 'users/new'
   get 'signup', to: 'users#new'
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
   
   #get 'item', to: 'items#index'
-  
+  get 'ranking', to: 'items#ranking'
   
   root to: 'toppage#home'
-  #get 'purchases', to: 'purchases#new'
-  #post 'purchases', to: 'purchases#create'
+
   
   resources :users do
     member do

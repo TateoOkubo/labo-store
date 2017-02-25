@@ -36,4 +36,11 @@ class Item < ActiveRecord::Base
       nil
     end
   end
+  
+  # 総売り上げ数
+  def sumQuantity
+    sale_items.map{|m| m.quantity}.sum
+  end
+  
+  
 end
