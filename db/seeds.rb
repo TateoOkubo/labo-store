@@ -26,6 +26,10 @@ item2 = Item.create(name: "パルム", price: 100)
 item2.type = type[0]
 item2.save
 
+item3 = Item.create(name: "ペヤング", price: 100)
+item3.type = type[1]
+item3.save
+
 10.times do |n|
   name = Faker::Food.ingredient
   price = Faker::Number.number(4)
@@ -80,5 +84,32 @@ end
 
 puts "\n -> LineItem_seeds OK!!"
 
+#仕入れ
+purchase1 = Purchase.create
+purchase1.purchase_items.create(item_id: item1.id, quantity: 30)
+purchase1.purchase_items.create(item_id: item2.id, quantity: 40)
+purchase1.purchase_items.create(item_id: item3.id, quantity: 50)
+purchase2 = Purchase.create
+purchase2.purchase_items.create(item_id: item1.id, quantity: 3)
+purchase2.purchase_items.create(item_id: item2.id, quantity: 2)
+
+purchase3 = Purchase.create
+Item.all.each do |i|
+  purchase3.purchase_items.create(item_id: i.id, quantity: rand(6) + 1)
+  print "."
+  end
+purchase3.save
+puts "\n -> Purchase_seeds OK!!"
+
+#販売
+sale1 = Sale.create(user_id: admin.id)
+sale1.sale_items.create(item_id: item1.id, quantity: 10)
+sale1.sale_items.create(item_id: item2.id, quantity: 15)
+sale1.sale_items.create(item_id: item3.id, quantity: 20)
+sale2 = Sale.create(user_id: admin.id)
+sale2.sale_items.create(item_id: item1.id, quantity: 1)
+sale2.sale_items.create(item_id: item2.id, quantity: 2)
+sale2.sale_items.create(item_id: item3.id, quantity: 3)
+puts "\n -> Sale_seeds OK!!"
 
 

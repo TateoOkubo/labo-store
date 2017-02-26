@@ -1,4 +1,6 @@
 class Sale < ActiveRecord::Base
+  validates :user_id, presence: true 
+  
   has_many :sale_items ,foreign_key: "sale_id",
                          dependent: :destroy
   accepts_nested_attributes_for :sale_items
