@@ -2,7 +2,9 @@ class ItemsController < ApplicationController
   
   
   def index
-    @items = Item.all
+    #@items = Item.all
+    @i        = Item.search(params[:q])
+    @items = @i.result(distinct: true)
   end
   
   def register
