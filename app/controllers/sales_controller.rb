@@ -37,6 +37,9 @@ class SalesController < ApplicationController
       @items.destroy_all
       
       flash[:success] = "購入しました"
+      # メール送信
+      NoticeMailer.buy(@user.email, @sale).deliver
+      
       redirect_to new_sale_path
     else
       render 'new'

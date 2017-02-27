@@ -4,9 +4,9 @@ class UsersController < ApplicationController
   end
   
   def show
-    
+    @user = User.find(params[:id])
     # 現状はrootへ
-    redirect_to root_path
+    #redirect_to root_path
   end
   
   def create
@@ -27,6 +27,14 @@ class UsersController < ApplicationController
     @items = @user.cart.line_items
     p "-----------------------"
     p @items
+  end
+  
+  def edit
+    @user = User.find(params[:id])
+  end
+  
+  def update
+    
   end
   
   private
