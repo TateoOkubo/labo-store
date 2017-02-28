@@ -21,12 +21,8 @@
     <%#= show_item.quantity %>
     <div id="form-<%= show_item.id %>">
     <%= form_for(show_item, html: {controller: :line_items, action: :edit}, data: { remote: true }) do |f| %>
-      <%= button_tag( class: "btn btn-default btn-sm", name: "plus") do %>
-        <%= content_tag :span, "", class: "glyphicon glyphicon-plus" %>
-      <% end %>
-      <%= button_tag( class: "btn btn-default btn-sm", name: "minus") do %>
-        <%= content_tag :span, "", class: "glyphicon glyphicon-minus" %>
-      <% end %>
+      <%# プルダウンで選択させたい %>
+      <%# 0 から show_item.item.stock %>
       <div id="quantity-<%= show_item.id %>">
         <%= f.number_field :quantity %>
       </div>
@@ -36,9 +32,9 @@
           $('#form-<%= show_item.id %>').submit();
         });
       </script>
+      
 
       <%#= f.submit %>
-      
       
     <% end %>
     </div>

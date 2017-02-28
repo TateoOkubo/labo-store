@@ -6,7 +6,9 @@ class SalesController < ApplicationController
     @items = @user.cart.line_items
     p "-----------------------"
     p @user
-    
+    p ""
+    p @items
+    p "-----------------------"
     
   end
   
@@ -15,19 +17,28 @@ class SalesController < ApplicationController
     @sale = Sale.new(user_id: @user.id)
     @items = @user.cart.line_items
     
+    p "-----create---------"
+    p @user
+    p ""
+    p @items
+    p "-----------------------"
+    
     out_of_stock = []
     
     @items.each do |i|
       # 個数のチェックは必要?
       #binding.pry
       if (i.item.stock - i.quantity) >= 0
-        @sale.sale_items.new(item_id: i.id, quantity: i.quantity)
+        #i.id -> i.item_id これがバグ
+        @sale.sale_items.new(item_id: i.item_id, quantity: i.quantity)
       else
         #在庫不足している商品名を記録
         out_of_stock << i.name
         
       end
     end
+    
+    #binding.pry
     
     if out_of_stock.count > 0
       flash[:alert] = out_of_stock.join(",") + "の在庫が不足してます"

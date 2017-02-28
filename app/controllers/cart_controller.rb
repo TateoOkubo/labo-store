@@ -21,5 +21,10 @@ class CartController < ApplicationController
     redirect_to cart_path
     
   end
-
+  
+  def edit
+    
+  end
+  
+  
 end
