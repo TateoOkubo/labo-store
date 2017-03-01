@@ -23,7 +23,8 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :cart
+  #resources :cart
+  get 'cart', to: 'cart#index'
   
   resources :items do
     collection do

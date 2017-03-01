@@ -3,6 +3,24 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   
-  # Ajaxでリクエスト送信時にトークンを付与
+  include SessionsHelper
+
+  private
+  def logged_in_user
+    unless logged_in?
+      store_location
+      flash[:danger] = "Please log in."
+      redirect_to login_url
+    end
+  end
+  
+   
+  def admin_user
+    unless admin?
+      flash[:danger] = "管理者権限が必要です"
+      redirect_to root_path
+    end
+  end
+  
 
 end

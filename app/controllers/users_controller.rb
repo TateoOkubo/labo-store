@@ -1,12 +1,20 @@
 class UsersController < ApplicationController
+  before_action :logged_in_user, only: [:create, :destroy, :edit, :show]
+  #before_action :correct_user,   only: [:edit, :update, :show]
+  
   def new
     @user = User.new
   end
   
   def show
-    @user = User.find(params[:id])
-    # 現状はrootへ
-    #redirect_to root_path
+    if correct_user? 
+      @user = User.find(params[:id])
+      # 現状はrootへ
+      #redirect_to root_path
+    else
+      # 強制的に自分のページへ
+      redirect_to current_user
+    end
   end
   
   def create
@@ -30,7 +38,12 @@ class UsersController < ApplicationController
   end
   
   def edit
-    @user = User.find(params[:id])
+    if correct_user? 
+      @user = User.find(params[:id])
+    else
+      flash[:error] = "自分のみを編集可能です"
+      redirect_to current_user
+    end
   end
   
   def update
@@ -40,5 +53,10 @@ class UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  end
+  
+  def correct_user?
+    @user = User.find(params[:id])
+    return @user == current_user
   end
 end

@@ -1,4 +1,6 @@
 class PurchasesController < ApplicationController
+  before_action :admin_user
+  
   def new
     @purchase = Purchase.new
     @purchase.purchase_items.build

@@ -8,7 +8,13 @@ module SessionsHelper
   end
   
   def admin?
-    current_user.admin
+    if logged_in?
+      current_user.admin
+    else
+      flash[:danger] = "Please log in."
+      redirect_to login_url 
+    end
+    
   end
 
   def store_location

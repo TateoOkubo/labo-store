@@ -8,7 +8,13 @@ class ItemsController < ApplicationController
   end
   
   def register
-    @item = Item.new
+    # adminか確認する
+    #if logged_in? && admin?
+      @item = Item.new
+    #else
+    #  redirect_to root_path
+    #end
+    
   end 
   
   def create

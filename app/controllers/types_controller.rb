@@ -1,4 +1,6 @@
 class TypesController < ApplicationController
+  before_action :admin_user
+  
   def new
     @type = Type.new
   end

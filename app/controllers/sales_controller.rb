@@ -1,6 +1,7 @@
 class SalesController < ApplicationController
+  before_action :logged_in_user
+ 
   def new
-    
     @sale = Sale.new
     @user = User.find_by(id: session[:user_id])
     @items = @user.cart.line_items

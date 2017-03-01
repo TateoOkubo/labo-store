@@ -1,4 +1,6 @@
 class CartController < ApplicationController
+  before_action :logged_in_user
+  
   def show
     user = User.find(session[:user_id])
     @cart_items = user.cart.line_items
@@ -24,6 +26,13 @@ class CartController < ApplicationController
   
   def edit
     
+  end
+  
+  def index
+    user = User.find(session[:user_id])
+    @cart_items = user.cart.line_items
+    @cart = user.cart
+    render 'show'
   end
   
   

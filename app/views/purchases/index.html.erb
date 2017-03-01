@@ -1,10 +1,14 @@
 <%= debug "Find me in app/views/purchase/index.html.erb" if Rails.env.development? %>
-<h1>仕入れ一覧</h1>
+<% if admin? %>
+  <h1>仕入れ一覧</h1>
 
-<div class="container">
-  <% @purchases.each do |p| %>
-    <%= link_to p.created_at, p %> <br>
-  <% end %>
-</div>
+  <div class="container">
+    <% @purchases.each do |p| %>
+      <%= link_to p.created_at, p %> <br>
+    <% end %>
+  </div>
+  <%= debug @purchases if Rails.env.development? %>
+<% else %>
+  <%= render 'share/error' %>
+<% end %>
 
-<%= debug @purchases if Rails.env.development? %>
