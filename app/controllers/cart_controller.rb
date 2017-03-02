@@ -1,5 +1,5 @@
 class CartController < ApplicationController
-  before_action :logged_in_user
+  #before_action :logged_in_user
   
   def show
     user = User.find(session[:user_id])
@@ -12,6 +12,7 @@ class CartController < ApplicationController
   end
   
   def update
+    p "--------- cart_controlle update ------"
     # カートに追加
     user = User.find(params["id"])
     adding_item = Item.find(params["item_id"])
@@ -20,7 +21,7 @@ class CartController < ApplicationController
     flash[:success] = adding_item.name + "をカートに追加しました"
     
     # カート内を表示
-    redirect_to cart_path
+    redirect_to cart_index_path
     
   end
   

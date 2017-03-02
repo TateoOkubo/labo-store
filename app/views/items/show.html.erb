@@ -11,9 +11,11 @@
     <p class="card-text">残り<%= @item.stock %>個</p>
     
     <% if @item.stock? %>
-      <%= form_for(current_user.cart) do |f| %>
-        <div><%= hidden_field_tag :item_id, @item.id %></div>
-        <%= f.submit "Add cart", class: "btn btn-primary" %>
+      <%= form_for(current_user.cart, :remote=>true) do |f| %>
+        <div>
+          <%= hidden_field_tag :item_id, @item.id %>
+        </div>
+        <%= f.submit "カートに追加", class: "btn btn-primary" %>
       <% end %>
     <% else %>
       <h4>在庫切れ</h4>
