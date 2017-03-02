@@ -1,10 +1,8 @@
-
 <fieldset>
   <%= f.label :item_id, "商品名" %>
-  <%= f.select :item_id, Item.all.map{|o| [o.name, o.id]} %>
+  <%= f.select :item_id, Item.all.map{|o| [o.name, o.id]}, {}, {class: 'form-control'} %>
   <%#= f.text_field :item_id %>
-  ：
   <%= f.label :quantity, "仕入れ数" %>
-  <%= f.number_field :quantity %>
+  <%= f.number_field :quantity, class: 'form-control' %>
   <%= link_to "削除", '#', class: "remove_fields" %>
 </fieldset>

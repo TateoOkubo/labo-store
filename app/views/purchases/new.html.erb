@@ -2,10 +2,11 @@
 
 <%= form_for(@purchase) do |f| %>
   <div class="field">
-    <%#= f.label :purchase_items, "仕入れ" %><br>
-    <%= f.fields_for :purchase_items do |builder| %>
-       <%= render "purchase_item_fields", f: builder %>
-    <% end %>
+      <%#= f.label :purchase_items, "仕入れ" %><br>
+        <%= f.fields_for :purchase_items do |builder| %>
+          <%= render "purchase_item_fields", f: builder %>
+        <% end %>
+      
     <%= link_to_add_fields "商品追加", f, :purchase_items %>
   </div>
 

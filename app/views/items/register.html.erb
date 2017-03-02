@@ -11,7 +11,7 @@
       
         <% #Typeから商品分類を持ってきてプルダウンメニューにする %>
         <%= f.label :商品分類 %>
-        <%= f.select :type_id, Type.all.map{|o| [o.name, o.id]}, class: 'form-control'  %>
+        <%= f.select :type_id, Type.all.map{|o| [o.name, o.id]}, {}, {class: 'form-control'}  %>
         <br>
       
         <%= f.label :値段 %>
