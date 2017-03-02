@@ -1,10 +1,11 @@
 class CartController < ApplicationController
-  #before_action :logged_in_user
+  before_action :logged_in_user
   
   def show
-    user = User.find(session[:user_id])
-    @cart_items = user.cart.line_items
-    @cart = user.cart
+    redirect_to :action => 'index'
+    #user = User.find(session[:user_id])
+    #@cart_items = user.cart.line_items
+    #@cart = user.cart
   end
 
   def create
@@ -21,7 +22,7 @@ class CartController < ApplicationController
     flash[:success] = adding_item.name + "をカートに追加しました"
     
     # カート内を表示
-    redirect_to cart_index_path
+    redirect_to :action => 'index'
     
   end
   

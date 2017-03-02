@@ -11,7 +11,7 @@
     <p class="card-text">残り<%= @item.stock %>個</p>
     
     <% if @item.stock? %>
-      <%= form_for(current_user.cart, :remote=>true) do |f| %>
+      <%= form_for(current_user.cart) do |f| %>
         <div>
           <%= hidden_field_tag :item_id, @item.id %>
         </div>
