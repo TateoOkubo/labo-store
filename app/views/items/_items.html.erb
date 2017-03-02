@@ -4,7 +4,7 @@
   <div class="container-inner inner-default clearfix">
     <% items.each do |item| %>
     <div class="col-sm-6 col-lg-4">
-      <div class="panel panel-primary">
+      <!--div class="panel panel-primary" -->
         <div class="card">
           <% #TODO 画像は検索エンジンかAmazon, RakutenとかのAPIで引っ張ってくる %>
           <% if item.image.url %>
@@ -16,7 +16,7 @@
             <h4 class="card-title"> <%= link_to item.name, item %> </h4>
           </div>
         </div>
-      </div>
+      <!-- /div -->
     </div>
 
     <% end %>
