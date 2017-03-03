@@ -15,7 +15,7 @@ class CartController < ApplicationController
   def update
     p "--------- cart_controlle update ------"
     # カートに追加
-    user = User.find(params["id"])
+    user = current_user #User.find(params["id"])
     adding_item = Item.find(params["item_id"])
     user.cart.add(adding_item)
     
