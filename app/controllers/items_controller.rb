@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  
+  before_action :admin_user, only: [:edit, :create, :update]
   
   def index
     #@items = Item.all
