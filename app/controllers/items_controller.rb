@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :admin_user, only: [:edit, :create, :update]
+  before_action :admin_user, only: [:edit, :create, :update, :shortage]
   
   def index
     #@items = Item.all
@@ -71,6 +71,20 @@ class ItemsController < ApplicationController
     @sum = @ranking.map{|m| m.sumQuantity}
   end
   
+  def shortage
+    #在庫不足しているものを表示
+    @shortage = shortage_items(3).sort_by{|v| v.stock}
+    
+  end
+  
+  def search_shortage
+    p "^^^^^^^^^^^^^^^^^^^^^^^"
+    p params
+    
+    @shortage = shortage_items(params[:q].to_i).sort_by{|v| v.stock}
+    render 'shortage'
+  end
+  
   private
   
   def item_regist_params
@@ -79,6 +93,15 @@ class ItemsController < ApplicationController
   
   def item_update_params
     params.require(:item).permit(:image, :name, :type_id, :price)
+  end
+  
+  # 在庫がnum以下の商品を取り出す
+  def shortage_items(num)
+    if num != nil
+      Item.all.find_all{|v| v.stock <= num}
+    else
+      Item.all
+    end
   end
   
 end

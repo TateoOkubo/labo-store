@@ -12,7 +12,8 @@ module SessionsHelper
       current_user.admin
     else
       flash[:danger] = "Please log in."
-      redirect_to login_url 
+      redirect_to login_path 
+      #redirect_to
     end
     
   end

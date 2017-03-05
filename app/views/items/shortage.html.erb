@@ -1,0 +1,53 @@
+
+<h1>在庫が不足している商品一覧</h1>
+
+<%# 検索 %>
+<div class="container">
+  <div class="row">
+    <%= form_tag("/items/shortage") do %>
+      <div class="container-inner inner-default clearfix">
+        <div class="col-md-2">
+          <p>在庫数を指定：</p>
+          <%#= label_tag(:q, "在庫数を指定:") %>
+        </div>
+        <div class="col-md-7">
+          <%= number_field_tag :q, nil, min: 0, max: 20, class: 'form-control' %>
+        </div>
+        <div class="col-md-3">
+          <%= submit_tag("検索", class: 'btn btn-primary') %>
+        </div>
+      </div>
+      <%#= number_field_tag(:q , class: 'form-control') %>
+      
+    <% end %>
+  </div>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th><%# 商品画像 %></th> 
+      <th><%# 商品名 %></th> 
+      <th>在庫数</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @shortage.each do |show_item| %>
+      <tr>
+        <th>
+          <% if show_item.image.url %>
+           <%= image_tag(show_item.image.url,alt: show_item.name, class: "cart-img")  %>
+          <% else %>
+            <%= image_tag('no-image.png', alt: show_item.name, class: "cart-img") %> 
+          <% end %>
+        </th>
+        <th><%= link_to(show_item.name, show_item) %></th>
+        <th>
+          <%= show_item.stock %>
+        </th>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= debug @shortage if Rails.env.development? %>

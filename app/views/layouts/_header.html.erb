@@ -13,6 +13,9 @@
             <li><%= link_to "一覧", items_path %></li>
             <li><%= link_to "ランキング", ranking_path %></li>
             <li><%= link_to "新着", '#' %></li>
+            <% if logged_in? && admin? %>
+              <li><%= link_to "在庫不足", shortage_items_path %></li>
+            <% end %>
           </ul>
         </li>
         

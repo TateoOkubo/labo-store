@@ -29,6 +29,8 @@ Rails.application.routes.draw do
   resources :items do
     collection do
       get 'register'
+      get 'shortage'
+      post 'shortage', to: 'items#search_shortage'
     end
   end
   
