@@ -21,3 +21,9 @@
 <%= button_to("購入確認", new_sale_path, class: "btn btn-primary") %>
 
 <%#= 買物を続けるボタンを %>
+<%# add cartからきた場合のみ表示 %>
+<%= link_to items_path,  class: "btn btn-mini btn-primary" do %>
+        <i class="icon-trash icon-white"></i> 買い物を続ける
+      <% end %>
+      
+<%= link_to "新規作成", {:controller => "users", :action => "new"}, :confirm => "本当に移動しますか？" %>
