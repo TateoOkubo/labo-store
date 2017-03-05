@@ -32,4 +32,12 @@ class Cart < ActiveRecord::Base
     end
   end
   
+  def empty?
+    if line_items.count > 0
+      return nil
+    else
+      return true
+    end
+  end
+  
 end

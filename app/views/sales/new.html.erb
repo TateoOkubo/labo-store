@@ -1,6 +1,7 @@
 <h1>購入手続き</h1>
 
-<% if @items.count != 0 %>
+<%# if @items.count != 0 %>
+<% if !@user.cart.empty? %>
 　<p>以下の内容で購入します</p>
   <%# カートの中身を一覧表示 %>
   <%= render 'share/item_table', items: @items %>

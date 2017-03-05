@@ -1,13 +1,8 @@
 <% if logged_in? %>
   <div class="row">
-    <aside class="col-md-4">
-      <section class="user_info">
-        <%#= render 'shared/user_info' %>
-      </section>
-      <section class="micropost_form">
-        <%#= render 'shared/micropost_form' %>
-      </section>
-    </aside>
+    <h1>何か買ってく？</h1>
+    <%= render 'share/items', items: @items %>
+    
   </div>
 <% else %>
   <div class="center jumbotron">

@@ -10,7 +10,7 @@
   </td>
   <td>
      <%# 商品名表示 %>
-     <%= show_item.name %>
+     <%= link_to(show_item.name, show_item.item) %>
   </td>
   <td>
     <%= show_item.price * show_item.quantity  %> 円

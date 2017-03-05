@@ -52,7 +52,7 @@ class SalesController < ApplicationController
       # メール送信
       NoticeMailer.buy(@user.email, @sale).deliver
       
-      redirect_to new_sale_path
+      redirect_to cart_index_path
     else
       render 'new'
     end

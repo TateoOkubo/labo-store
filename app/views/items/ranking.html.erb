@@ -1,7 +1,7 @@
 <h1>ランキング</h1>
 
 <%# 上位4件だけ表示 %>
-<%= render 'items', items: @ranking[0 .. 3] %>
+<%= render 'share/items', items: @ranking[0 .. 3] %>
 
 <%= debug @sum[0 .. 2] if Rails.env.development? %>
 <%= debug @ranking[0 .. 2] if Rails.env.development? %>

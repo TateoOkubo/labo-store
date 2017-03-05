@@ -1,29 +1,36 @@
-<table class="table">
-  <thead>
-    <tr>
-      <th><%# 商品画像 %></th> <th><%# 商品名 %></th> <th>価格</th> <th>個数</th>
-    </tr>
-  </thead>
-  <tbody>
-    <%#= @cart.line_items.inspect %>
-    <% @cart_items.each do |show_item| %>
-      <%#= form_for(show_item, html: {controller: :line_items, action: :edit}) do |f| %>
-        <%#= f.text_field :quantity %>
-        <%#= f.submit %>
-      <%# end %>
-      <div id='show-item-<%= show_item.id %>'>
-        <%= render 'item', show_item: show_item %>
-      </div>
-          
-    <% end %>
-</table>
-<%# 購入ボタン %>
-<%= button_to("購入確認", new_sale_path, class: "btn btn-primary") %>
-
-<%#= 買物を続けるボタンを %>
-<%# add cartからきた場合のみ表示 %>
+<% if params[:to_cart] %>
 <%= link_to items_path,  class: "btn btn-mini btn-primary" do %>
         <i class="icon-trash icon-white"></i> 買い物を続ける
       <% end %>
-      
-<%= link_to "新規作成", {:controller => "users", :action => "new"}, :confirm => "本当に移動しますか？" %>
+<% end %>
+
+<% if !@cart.empty? %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th><%# 商品画像 %></th> <th><%# 商品名 %></th> <th>価格</th> <th>個数</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%#= @cart.line_items.inspect %>
+      <% @cart_items.each do |show_item| %>
+        <%#= form_for(show_item, html: {controller: :line_items, action: :edit}) do |f| %>
+          <%#= f.text_field :quantity %>
+          <%#= f.submit %>
+        <%# end %>
+        <div id='show-item-<%= show_item.id %>'>
+          <%= render 'item', show_item: show_item %>
+        </div>
+          
+      <% end %>
+    </tbody>
+  </table>
+  <%# 購入ボタン %>
+  <%= button_to("購入確認", new_sale_path, class: "btn btn-primary") %>
+
+<% else %>
+ <h2>カートが空です</h2>
+<% end %>
+
+<%= debug params if Rails.env.development? %>
+<%= debug params[:controller] if Rails.env.development? %>

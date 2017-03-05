@@ -19,11 +19,16 @@ class CartController < ApplicationController
     adding_item = Item.find(params["item_id"])
     user.cart.add(adding_item)
     
-    flash[:success] = adding_item.name + "をカートに追加しました"
+    flash.now[:success] = adding_item.name + "をカートに追加しました"
     
+    params[:to_cart] = true
     # カート内を表示
-    redirect_to :action => 'index'
+    @cart_items = user.cart.line_items
+    @cart = user.cart
+    render 'show'
+    #redirect_to :action => 'index'
     
+    p params
   end
   
   def edit
