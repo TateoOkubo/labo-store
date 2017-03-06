@@ -47,8 +47,17 @@ class UsersController < ApplicationController
   end
   
   def update
+    p "-^-^-^- user update -^-^-^-^"
+    @user = User.find(params["id"])
+    if @user.update(user_params)
+      flash[:success] = '更新完了!'
+      redirect_to edit_user_path
+    else
+      flash[:danger] = '更新失敗'
+      render 'edit'
+    end
     
-    redirect_to user_path
+    #redirect_to user_path
   end
   
   private
