@@ -57,6 +57,10 @@ class ItemsController < ApplicationController
     
     #binding.pry
     if @update_item.update(item_update_params)
+      p "   updating ... !!"
+      @update_item.image = params[:image]
+      p @update_item
+      
       flash[:success] = '更新完了！'
       p "^^^^ update success ^^^^"
       redirect_to (item_path)
