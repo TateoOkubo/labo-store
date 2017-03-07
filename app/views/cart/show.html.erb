@@ -3,6 +3,7 @@
         <i class="icon-trash icon-white"></i> 買い物を続ける
       <% end %>
 <% end %>
+hoge
 
 <% if !@cart.empty? %>
   <table class="table">
@@ -18,9 +19,9 @@
           <%#= f.text_field :quantity %>
           <%#= f.submit %>
         <%# end %>
-        <div id='show-item-<%= show_item.id %>'>
+        <!--<div id='show-item-<%#= show_item.id %>'>-->
           <%= render 'item', show_item: show_item %>
-        </div>
+        <!--</div>-->
           
       <% end %>
     </tbody>

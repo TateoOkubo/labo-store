@@ -1,5 +1,5 @@
 
-<tr>
+<tr id='show_item-<%= show_item.id %>'>
   <td> 
     <%#= 画像 %>
     <% if show_item.image.url %>
@@ -19,23 +19,26 @@
   <td> 
     
     <%#= show_item.quantity %>
-    <div id="form-<%= show_item.id %>">
-    <%= form_for(show_item, html: {controller: :line_items, action: :edit}, data: { remote: true }) do |f| %>
+    <!--<div id="form-<%#= show_item.id %>">-->
+    <%= form_for(show_item, html: {controller: :line_items, action: :update, method: :patch}, data: { remote: true}) do |f| %>
       <%# プルダウンで選択させたい %>
       <%# 0 から show_item.item.stock %>
-      <div id="quantity-<%= show_item.id %>">
-        <%= f.number_field :quantity %>
-      </div>
+      <!--<div id="quantity-<%#= show_item.id %>">-->
+        <%= f.number_field :quantity, id: "quantity-"+ show_item.id.to_s %>
+      <!--</div>-->
       <br>
       <script>
-        $("#quantity-<%= show_item.id %>").change(function(e){
-          $('#form-<%= show_item.id %>').submit();
-        });
-      </script>
+         $("#quantity-<%#= show_item.id %>").change(function(e){
+           // $('#form-<%#= show_item.id %>').submit();
+           $('#edit_line_item_<%#= show_item.id %>').submit();
+
+         });
+       </script>
       
-     
+      
+     <%#= f.submit %>
     <% end %>
-    </div>
+    <!--</div>-->
   </td>
 </tr>
 

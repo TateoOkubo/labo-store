@@ -25,8 +25,9 @@ class CartController < ApplicationController
     # カート内を表示
     @cart_items = user.cart.line_items
     @cart = user.cart
-    render 'show'
-    #redirect_to :action => 'index'
+    # render 'show'
+    redirect_to :action => 'index'
+    # redirect_to :back
     
     p params
   end

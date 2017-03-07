@@ -10,7 +10,7 @@ class LineItemsController < ApplicationController
     
     if @update_line_item.update(update_params)
       flash[:success] = '更新完了！'
-      #redirect_to (cart_path)
+      redirect_to cart_index_path
     else
       # エラー表示
       flash[:danger] = '更新失敗'
