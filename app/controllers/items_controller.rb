@@ -55,10 +55,12 @@ class ItemsController < ApplicationController
     #binding.pry
     if @update_item.update(item_update_params)
       flash[:success] = '更新完了！'
+      p "^^^^ update success ^^^^"
       redirect_to (item_path)
     else
       # エラー表示
       flash[:danger] = '更新失敗'
+      p "^^^^^ update faiure ^^^^"
       render 'edit'
     end
   end
