@@ -47,7 +47,7 @@ class ItemsController < ApplicationController
   
   # 更新処理
   def update
-    @update_item = Item.find(params["id"])
+    @update_item = Item.find(params[:id])
     p "^^^^^ items update ^^^^^"
     p item_update_params
     p "^^^^^^^^^^^^^^^^^^^^^^^^^"
