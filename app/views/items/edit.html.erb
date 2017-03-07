@@ -3,8 +3,8 @@
   <h1>商品情報更新</h1>
 
   <%= form_for(@item) do |f| %>
-    <% if @item.image.url %>
-     <%= image_tag @item.image.url %>
+    <% if @item.image %>
+      <%= image_tag @item.image.url %>
     <% else %>
       <%= image_tag('no-image.png',  class: "card-img-top") %>
     <% end %>
