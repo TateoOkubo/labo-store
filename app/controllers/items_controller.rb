@@ -53,13 +53,17 @@ class ItemsController < ApplicationController
     
     p ","
     p @update_item
+    p "next --> params"
+    p params
     p "^^^^^^^^^^^^^^^^^^^^^^^^^"
     
     #binding.pry
     if @update_item.update(item_update_params)
       p "   updating ... !!"
-      @update_item.image = params[:image]
-      p @update_item
+      @update_item.image = params.require(:item).permit(:image)
+      p @update_item.image
+      p "改行"
+      p params.require(:item).permit(:image)
       
       flash[:success] = '更新完了！'
       p "^^^^ update success ^^^^"
