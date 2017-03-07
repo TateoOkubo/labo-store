@@ -48,6 +48,9 @@ class ItemsController < ApplicationController
   # 更新処理
   def update
     @update_item = Item.find(params["id"])
+    p "^^^^^ items update ^^^^^"
+    p item_update_params
+    p "^^^^^^^^^^^^^^^^^^^^^^^^^"
     if @update_item.update(item_update_params)
       flash[:success] = '更新完了！'
       redirect_to (item_path)
