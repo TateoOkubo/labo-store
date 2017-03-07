@@ -40,9 +40,9 @@ class ItemsController < ApplicationController
   
   def edit
     @item = Item.find(params[:id])
-    puts "*********************************************"
+    puts "*************items edit*********************"
     p @item # pにすること
-    puts "*********************************************"
+    puts "*************items edit end***********************"
   end
   
   # 更新処理
@@ -51,6 +51,8 @@ class ItemsController < ApplicationController
     p "^^^^^ items update ^^^^^"
     p item_update_params
     p "^^^^^^^^^^^^^^^^^^^^^^^^^"
+    
+    #binding.pry
     if @update_item.update(item_update_params)
       flash[:success] = '更新完了！'
       redirect_to (item_path)
