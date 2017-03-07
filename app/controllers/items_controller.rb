@@ -50,6 +50,9 @@ class ItemsController < ApplicationController
     @update_item = Item.find(params[:id])
     p "^^^^^ items update ^^^^^"
     p item_update_params
+    
+    p ","
+    p @update_item
     p "^^^^^^^^^^^^^^^^^^^^^^^^^"
     
     #binding.pry
