@@ -102,7 +102,7 @@ class ItemsController < ApplicationController
   end
   
   def item_update_params
-    params.require(:item).permit(:image, :name, :type_id, :price)
+    params.require(:item).permit(:name, :type_id, :price)
   end
   
   # 在庫がnum以下の商品を取り出す
