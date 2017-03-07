@@ -65,6 +65,8 @@ class ItemsController < ApplicationController
       p "改行"
       p params.require(:item).permit(:image)
       
+      @update_items.save
+      
       flash[:success] = '更新完了！'
       p "^^^^ update success ^^^^"
       redirect_to (item_path)
