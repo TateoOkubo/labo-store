@@ -20,7 +20,8 @@
     
     <%#= show_item.quantity %>
     <!--<div id="form-<%#= show_item.id %>">-->
-    <%= form_for(show_item, html: {controller: :line_items, action: :update, method: :patch}, data: { remote: true}) do |f| %>
+    <%#= form_for(show_item, html: {controller: :line_items, action: :update, method: :patch}, data: { remote: true}) do |f| %>
+    <%= form_for(show_item, html: {controller: :line_items, action: :update, method: :patch}) do |f| %>
       <%# プルダウンで選択させたい %>
       <%# 0 から show_item.item.stock %>
       <!--<div id="quantity-<%#= show_item.id %>">-->

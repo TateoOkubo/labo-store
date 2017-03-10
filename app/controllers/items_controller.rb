@@ -59,13 +59,13 @@ class ItemsController < ApplicationController
     
     #binding.pry
     if @update_item.update(item_update_params)
-      p "   updating ... !!"
-      @update_item.image = params.require(:item).permit(:image)
-      p @update_item.image
-      p "改行"
-      p params.require(:item).permit(:image)
-      
-      @update_items.save
+      #p "   updating ... !!"
+      #@update_item.image = params.require(:item).permit(:image)
+      #p @update_item.image
+      #p "改行"
+      #p params.require(:item).permit(:image)
+      #Cloudinary::Uploader.upload('/home/my_image.jpg')
+      #@update_items.save
       
       flash[:success] = '更新完了！'
       p "^^^^ update success ^^^^"
@@ -112,7 +112,7 @@ class ItemsController < ApplicationController
   end
   
   def item_update_params
-    params.require(:item).permit(:name, :type_id, :price)
+    params.require(:item).permit(:image, :name, :type_id, :price)
   end
   
   # 在庫がnum以下の商品を取り出す
