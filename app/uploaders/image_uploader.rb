@@ -12,7 +12,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   #end
   
   #storage :file
-   storage :fog
+  storage :fog
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
@@ -24,9 +24,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   #  "#{SecureRandom.uuid}.#{file.extension}" if original_filename.present?
   #end
   def filename
-   "#{secure_token}.#{file.extension}" if original_filename.present?
-   
-   p "--- filename ---"
+    "#{secure_token}.#{file.extension}" if original_filename.present?
   end
   
   def public_id
