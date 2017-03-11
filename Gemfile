@@ -39,6 +39,8 @@ gem 'bootstrap-sass'
 gem 'bcrypt', '~> 3.1.7'
 
 gem 'carrierwave'
+gem 'rmagick'
+
 gem 'cloudinary'
 
 # 検索のため
