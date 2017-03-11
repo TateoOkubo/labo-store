@@ -25,6 +25,8 @@ class ImageUploader < CarrierWave::Uploader::Base
   #end
   def filename
    "#{secure_token}.#{file.extension}" if original_filename.present?
+   
+   p "--- filename ---"
   end
   
   def public_id
