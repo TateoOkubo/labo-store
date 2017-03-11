@@ -57,6 +57,8 @@ class ItemsController < ApplicationController
     p params
     p "^^^^^^ updating... ^^^^^^^^^^"
     
+    p item_update_params
+    
     #binding.pry
     if @update_item.update(item_update_params)
       #p "   updating ... !!"
