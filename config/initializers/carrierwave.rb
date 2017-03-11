@@ -1,4 +1,5 @@
 CarrierWave.configure do |config|
+  config.root = Rails.root.join('tmp')
   config.cache_dir = "#{Rails.root}/tmp/uploads"
   
   config.fog_credentials = {
@@ -11,6 +12,8 @@ CarrierWave.configure do |config|
   config.storage = :fog
   config.fog_directory = "micropost-okubo"
   config.fog_public = true
+  
+  
   #config.fog_authenticated_url_expiration = 60
 
   #case Rails.env
