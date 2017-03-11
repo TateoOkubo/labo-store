@@ -1,7 +1,11 @@
 CarrierWave.configure do |config|
+  
+  config.cache_storage = :fog #キャッシュの場所をS3に変更
+  
   config.root = Rails.root.join('tmp')
   config.cache_dir = "#{Rails.root}/tmp/uploads"
   
+
   config.fog_credentials = {
     provider: 'AWS',
     aws_access_key_id: ENV['AWS_ACCESS_KEY'],
