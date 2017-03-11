@@ -27,6 +27,10 @@ class ImageUploader < CarrierWave::Uploader::Base
     "#{secure_token}.#{file.extension}" if original_filename.present?
   end
   
+  def cache_dir
+    "#{Rails.root}/tmp/uploads"
+  end
+  
   def public_id
     model.id
   end
