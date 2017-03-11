@@ -1,6 +1,6 @@
 CarrierWave.configure do |config|
   
-  config.cache_storage = :fog #キャッシュの場所をS3に変更
+  #config.cache_storage = :fog #キャッシュの場所をS3に変更
   
   config.root = Rails.root.join('tmp')
   config.cache_dir = "#{Rails.root}/tmp/uploads"
@@ -12,10 +12,12 @@ CarrierWave.configure do |config|
     aws_secret_access_key: ENV['AWS_SECRET_KEY'],
     region: 'ap-northeast-1'
   }
+  config.cache_storage = :fog
   
   config.storage = :fog
   config.fog_directory = "micropost-okubo"
   config.fog_public = true
+  
   
   
   #config.fog_authenticated_url_expiration = 60
