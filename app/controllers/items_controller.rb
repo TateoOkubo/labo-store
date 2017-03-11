@@ -55,7 +55,7 @@ class ItemsController < ApplicationController
     p @update_item
     p "next --> params"
     p params
-    p "^^^^^^^^^^^^^^^^^^^^^^^^^"
+    p "^^^^^^ updating... ^^^^^^^^^^"
     
     #binding.pry
     if @update_item.update(item_update_params)
