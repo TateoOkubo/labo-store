@@ -20,6 +20,9 @@ class ImageUploader < CarrierWave::Uploader::Base
   #  "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   #end
 
+  def filename
+    "#{SecureRandom.uuid}.#{file.extension}" if original_filename.present?
+  end
   
   def public_id
     model.id
