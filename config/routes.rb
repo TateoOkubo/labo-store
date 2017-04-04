@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   get 'ranking', to: 'items#ranking'
   
   root to: 'toppage#home'
+  
+  get 'about', to: 'toppage#about'
 
   
   resources :users do
