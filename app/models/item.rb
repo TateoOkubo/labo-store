@@ -42,5 +42,15 @@ class Item < ActiveRecord::Base
     sale_items.map{|m| m.quantity}.sum
   end
   
+  # 一緒に買われている商品３つ
+  def buyTogether
+    #item.sale_items[1].sale.sale_items
+    flat = sale_items.map{|m| m.sale.sale_items}.flatten
+    flat = flat.select{|s| s.item_id != id}
+    item_ids = flat.map{|m| m.item_id}.uniq
+    
+    
+    return Item.find(item_ids).first(3)
+  end
   
 end

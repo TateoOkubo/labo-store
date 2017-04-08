@@ -35,3 +35,17 @@
     <% end %>
   </div>
 </div>
+<br>
+<div class="row buy_together">
+  <% unless @item.buyTogether.empty? %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        この商品を買った人はこんな商品も買っています
+      </div>
+      <div class="panel-body">
+        <%= render 'share/items', items: @item.buyTogether %>
+      </div>
+    </div>
+    
+  <% end %>
+</div>
